@@ -23,7 +23,7 @@ class App extends Component {
                         
                         <Layout>
                             <Content>
-                               
+                               <Tasks />
                             </Content>
                             <Footer style={{ textAlign: 'center' }}> © 2020 Created by Slav4ik888</Footer>
                         </Layout>
