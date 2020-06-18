@@ -1,25 +1,28 @@
 .section {
-    display: block;
-    width: 960px;
-    margin: 0 auto;
+    display: flex;
+    height: max-content;
+    flex-wrap: wrap; 
+    /* flex-direction: row; */
+    /* align-items: center;  */
+    justify-content: flex-start; 
+    width: 1040px;
+    /* margin: 0 auto; */
     /* padding-top: 50px; */
-    text-align: left;
+    /* text-align: left; */
     /* background-color: rgb(83, 117, 117); */
   
 }
 .root {
     display: flex;
-    height: max-content;
-    flex-wrap: wrap; 
     flex-direction: row;
-    align-items: center; 
+    align-items: center;
     justify-content: center;
 
     color: rgb(0, 43, 13);
-    /* background-color: rgb(136, 100, 24); */
+    background-color: rgb(209, 196, 167);
 
     margin: 30px 0 30px 0;
-    padding: 30px 0 30px 0;
+    padding: 30px 50px 30px 50px;
 }
 
 .title {

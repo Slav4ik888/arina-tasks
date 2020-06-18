@@ -1,23 +1,28 @@
 import React from 'react';
 import s from './tasks.module.css';
-import Task2Arg from '../../components/Task2Arg/task-2-arg.jsx';
+import Task23Arg from '../../components/Task23Arg/task-2-3-arg.jsx';
 
 
 // import cl from 'classnames';
 
 
 // Рендер карточек
-const ShowTasks = ({ plusTasks, minusTasks }) => {
+const ShowTasks = ({ plusTasks, minusTasks, multyTasks }) => {
     return (
         <div className={s.section}>
-            <div className={s.root}>
-                    {plusTasks.map( ({ a, b } , index) => (
-                            <Task2Arg a={a} b={b} type={'+'} key={index}/>
-                        ))}
-                    {minusTasks.map( ({ a, b } , index) => (
-                            <Task2Arg a={a} b={b} type={'-'}key={index}/>
-                        ))}
-            </div>
+            {plusTasks.map( ({ a, b } , index) => (
+                    <Task23Arg a={a} type1={'+'} b={b} key={index}/>
+                ))}
+            <br />
+
+            {minusTasks.map( ({ a, b } , index) => (
+                    <Task23Arg a={a} type1={'-'} b={b} key={index}/>
+                ))}
+            <br />
+
+            {multyTasks.map( ({ a, type1, b, type2, c } , index) => (
+                <Task23Arg a={a} type1={type1} b={b} type2={type2} c={c} key={index}/>
+            ))}
         </div>
     );
 }
@@ -44,17 +49,30 @@ class ShowForm extends React.PureComponent {
     changeMinPlus = event => {this.setState({ minPlus: event.target.value })}
     changeMaxPlus = event => {this.setState({ maxPlus: event.target.value })}
 
-    createSum = () => {
+    createPlus = (minPlus, maxPlus) => {
+        let  task = {};
+
+        while (true) {
+            task.a = Math.floor(+minPlus + Math.random() * (maxPlus - minPlus + 1)  );
+            task.b = Math.floor(+minPlus + Math.random() * (maxPlus - minPlus + 1)  );
+            
+            // Проверяем, чтобы цифры были не одинаковые
+            if (task.a !== task.b || +minPlus === +maxPlus) {
+                return task; // Возвращаем готовый приимер
+            } 
+        }
+    }
+
+    createPlusTasks = () => {
         const { qualPlusTasks, minPlus, maxPlus } = this.state;
         let arr = [], task = {};
         if (!qualPlusTasks) return;
         
         for(let i=0; i < qualPlusTasks; i++) {
-            task.a = Math.floor(+minPlus + Math.random() * (maxPlus - minPlus + 1)  );
-            task.b = Math.floor(+minPlus + Math.random() * (maxPlus - minPlus + 1)  );
+            task = this.createPlus(minPlus, maxPlus);
             
-            // Проверяем, чтобы цифры были не одинаковые
-            if (task.a !== task.b) {
+            // Проверки на корректность
+            if (true) {
                 arr.push(task); 
                 i++;
             }
@@ -63,24 +81,42 @@ class ShowForm extends React.PureComponent {
         }
         return arr; // Возвращаем готовые приимеры
     }
+
 
     // ВЫЧИТАНИЕ
     changeQualMinus = event => {this.setState({ qualMinusTasks: event.target.value })}
     changeMinMinus = event => {this.setState({ minMinus: event.target.value })}
     changeMaxMinus = event => {this.setState({ maxMinus: event.target.value })}
 
-    createMinus = () => {
+    
+    // Создаёт пример вычитания из 2х значения в виде объекта из 2х значение
+    createMinus = (minMinus, maxMinus) => {
+        let task = {};
+        if (minMinus > maxMinus) { console.log(`Ошибка minMinus > maxMinus`); return }
+
+        while (true) {
+            task.a = Math.floor(+minMinus + Math.random() * (maxMinus - minMinus + 1) );
+            task.b = Math.floor(+minMinus + Math.random() * (task.a - minMinus + 1) );
+            
+            // Проверяем, чтобы цифры были не одинаковые
+            if (task.a !== task.b || +minMinus === +maxMinus) {
+                return task; // Возвращаем готовый приимер
+            } 
+        }
+    }
+
+
+    // Создаём заданное кол-во примеров вычитания
+    createMinusTasks = () => {
         const { qualMinusTasks, minMinus, maxMinus } = this.state;
         if (!qualMinusTasks) return;
 
         let arr = [], task = {};
 
         for(let i=0; i < qualMinusTasks; i++) {
-            task.a = Math.floor(+minMinus + Math.random() * (maxMinus - minMinus + 1) );
-            task.b = Math.floor(+minMinus + Math.random() * (task.a - minMinus + 1) );
-            
-            // Проверяем, чтобы цифры были не одинаковые
-            if (task.a !== task.b) {
+            task = this.createMinus(minMinus, maxMinus);
+            // Проверки на корректность
+            if (true) {
                 arr.push(task); 
                 i++;
             }
@@ -90,10 +126,88 @@ class ShowForm extends React.PureComponent {
         return arr; // Возвращаем готовые приимеры
     }
 
+
+    // ПРИМЕРЫ В 2 ДЕЙСТВИЯ
+    changeQualMulty = event => {this.setState({ qualMultyTasks: event.target.value })}
+    changeMinMulty = event => {this.setState({ minMulty: event.target.value })}
+    changeMaxMulty = event => {this.setState({ maxMulty: event.target.value })}
+
+
+
+    // Создаём заданное кол-во примеров вычитания
+    createMultyTasks = () => {
+        const { qualMultyTasks, minMulty, maxMulty } = this.state;
+        if (!qualMultyTasks) return;
+
+        let arr = [], task = {}, task1 = {}, task2 = {};
+
+        for(let i=0; i < qualMultyTasks; i++) {
+            // Определяем тип первого действия и создаём его
+            if (Math.round(Math.random()) === 0) {
+                task1 = this.createPlus(minMulty, maxMulty);
+                task1.type = '+';
+                console.log('task1: ', task1);
+                
+            } else {
+                task1 = this.createMinus(minMulty, maxMulty);
+                task1.type = '-';
+                console.log('task1: ', task1);
+
+            };
+
+            // Определяем тип второго действия
+            if (Math.round(Math.random()) === 0) {
+                task2 = this.createPlus(minMulty, maxMulty);
+                task2.type = '+';
+                console.log('task2: ', task2);
+
+            } else {
+                let remains;
+                // Если А <= minMulty то прибавляем
+                if (task1.type === '-') {
+                    remains = task1.a - task1.b;
+                    if (remains <= minMulty) {
+                        task2 = this.createPlus(minMulty, maxMulty);
+                        task2.type = '+';
+                        console.log('remains <<<< task2: ', task2);
+
+                    } else {
+                        task2 = this.createMinus(minMulty, remains);
+                        task2.type = '-';
+                        console.log('remains task2 "-": ', task2);
+                    }
+                } else {
+
+                        task2 = this.createMinus(minMulty, maxMulty);
+                        task2.type = '-';
+                        console.log('task2 "-": ', task2);
+                }
+            };
+            
+
+            // Проверки на корректность
+            if (true) {
+                task.a = task1.a;
+                task.b = task1.b;
+                task.type1 = task1.type;
+                task.c = task2.b;
+                task.type2 = task2.type;
+
+                arr.push(task); 
+                i++;
+            }
+            i--;
+            task = {}; task1 = {}; task2 = {};
+        }
+        return arr; // Возвращаем готовые приимеры
+    }
+
+
+
     // ЗАПУСК
     create = event => {
         event.preventDefault();
-        this.props.callback( this.createSum(), this.createMinus() );
+        this.props.callback( this.createPlusTasks(), this.createMinusTasks(), this.createMultyTasks() );
     }
     
 
@@ -169,14 +283,18 @@ class Tasks extends React.PureComponent {
         isTasks: false, // Вывод примеров
         plusTasks: [],
         minusTasks: [],
+        multyTasks: [],
+
     }
 
-    handleTasks = (plusTasks, minusTasks) => {
+    handleTasks = (plusTasks, minusTasks, multyTasks) => {
         console.log('TASK minusTasks: ', minusTasks);
         console.log('TASK plusTasks: ', plusTasks);
+        console.log('TASK multyTasks: ', multyTasks);
+
 
         this.setState({
-            plusTasks, minusTasks,
+            plusTasks, minusTasks, multyTasks,
             isDone: false,
             isTasks: true,
         })
@@ -184,12 +302,16 @@ class Tasks extends React.PureComponent {
 
 
     render() {
-        const { isDone, isTasks, plusTasks, minusTasks  } = this.state;
+        const { isDone, isTasks, plusTasks, minusTasks, multyTasks  } = this.state;
         
         return (
             <>
+                {/* Выводим начальную форму */}
                 { isDone && <ShowForm callback={this.handleTasks}/> }
-                { isTasks && <ShowTasks plusTasks={plusTasks} minusTasks={minusTasks} /> }
+                {/* Выводим готовые примеры */}
+                { isTasks && <ShowTasks plusTasks={plusTasks} minusTasks={minusTasks} multyTasks={multyTasks}/> }
+                {/* Кнопка "начать заново" */}
+                <br />
                 { isTasks && <input type="button" onClick={() => this.setState({isDone: true, isTasks: false,})} value="Заново" className={s.input}/> }
 
             </>

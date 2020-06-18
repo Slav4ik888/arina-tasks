@@ -1,9 +1,12 @@
 import React from 'react';
-import s from './task-2-arg.module.css';
+import s from './task-2-3-arg.module.css';
 
 // Карточка для примера из 2х чисел
-const Task2Arg = ({ a, b, type }) => {
-	const task = `${a} ${type} ${b} = `;
+const Task23Arg = ({ a, type1, b, type2, c}) => {
+	let task = '';
+	if (!type2) task = `${a} ${type1} ${b} = `;
+	if (type2) task = `${a} ${type1} ${b} ${type2} ${c} = `;
+
 
 	return (
 			<div className={s.card}>
@@ -16,4 +19,4 @@ const Task2Arg = ({ a, b, type }) => {
 }
 
 
-export default Task2Arg;
+export default Task23Arg;
