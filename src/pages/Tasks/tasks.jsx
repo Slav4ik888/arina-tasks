@@ -1,21 +1,10 @@
 import React from 'react';
-import s from './Tasks.module.css';
+import s from './tasks.module.css';
+import Task2Arg from '../../components/Task2Arg/task-2-arg.jsx';
+
+
 // import cl from 'classnames';
 
-// Карточка для примера
-const Task = ({ a, b, type }) => {
-    const task = `${a} ${type} ${b} = `;
-
-    return (
-        <div className={s.card}>
-            <div className={s.task}>
-                {task} 
-            </div>
-            <div className={s.result}></div>
-        </div>
-    );
-    
-}
 
 // Рендер карточек
 const ShowTasks = ({ plusTasks, minusTasks }) => {
@@ -23,10 +12,10 @@ const ShowTasks = ({ plusTasks, minusTasks }) => {
         <div className={s.section}>
             <div className={s.root}>
                     {plusTasks.map( ({ a, b } , index) => (
-                            <Task a={a} b={b} type={'+'} key={index}/>
+                            <Task2Arg a={a} b={b} type={'+'} key={index}/>
                         ))}
                     {minusTasks.map( ({ a, b } , index) => (
-                            <Task a={a} b={b} type={'-'}key={index}/>
+                            <Task2Arg a={a} b={b} type={'-'}key={index}/>
                         ))}
             </div>
         </div>
@@ -37,12 +26,17 @@ class ShowForm extends React.PureComponent {
 
     state = {
         qualPlusTasks: 10,  // Кол-во примеров сложения
-        minPlus: 1,        // От 
-        maxPlus: 15,        // До
+        minPlus: 3,        // От 
+        maxPlus: 13,        // До
 
         qualMinusTasks: 10, // Кол-во примеров сложения
-        minMinus: 1,       // От 
-        maxMinus: 15,       // До
+        minMinus: 3,       // От 
+        maxMinus: 13,       // До
+
+        qualMultyTasks: 10, // Кол-во примеров сложения
+        minMulty: 3,       // От 
+        maxMulty: 8,       // До
+        
     }
 
     // СЛОЖЕНИЕ
@@ -142,6 +136,23 @@ class ShowForm extends React.PureComponent {
                                 onChange={this.changeMaxMinus} />
                         </label>
 
+                        <div className={s.title}>Задачи в 2 действия</div>
+                        <label>Сколько создать 
+                            <input type="number"  className={s.inputMaxMin}
+                                value={this.state.qualMinusTasks}
+                                onChange={this.changeQualMulty} />
+                        </label>
+                        <label>Числа от
+                            <input type="number"  className={s.inputMaxMin}
+                                value={this.state.minMulty}
+                                onChange={this.changeMinMulty} />
+                        </label>
+                        <label>До
+                            <input type="number" className={s.inputMaxMin}
+                                value={this.state.maxMulty}
+                                onChange={this.changeMaxMulty} />
+                        </label>
+
                         <input type="submit" value="Создать" className={s.input}/>
                     </form>
                 </div>
@@ -177,8 +188,9 @@ class Tasks extends React.PureComponent {
         
         return (
             <>
-                { isDone ? <ShowForm callback={this.handleTasks}/> : '' }
-                { isTasks ? <ShowTasks plusTasks={plusTasks} minusTasks={minusTasks} /> : ''}
+                { isDone && <ShowForm callback={this.handleTasks}/> }
+                { isTasks && <ShowTasks plusTasks={plusTasks} minusTasks={minusTasks} /> }
+                { isTasks && <input type="button" onClick={() => this.setState({isDone: true, isTasks: false,})} value="Заново" className={s.input}/> }
 
             </>
         )

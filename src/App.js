@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import s from './App.module.css';
 import cl from 'classnames';
 
-import Tasks from './pages/Tasks';
+import Tasks from './pages/Tasks/tasks.jsx';
 
 import { Spin, Layout } from 'antd';
 
