@@ -7,20 +7,10 @@ import Task23Arg from '../../components/Task23Arg/task-2-3-arg.jsx';
 
 
 // Рендер карточек
-const ShowTasks = ({ plusTasks, minusTasks, multyTasks }) => {
+const ShowTasks = ({ tasks }) => {
     return (
         <div className={s.section}>
-            {plusTasks.map( ({ a, b } , index) => (
-                    <Task23Arg a={a} type1={'+'} b={b} key={index}/>
-                ))}
-            <br />
-
-            {minusTasks.map( ({ a, b } , index) => (
-                    <Task23Arg a={a} type1={'-'} b={b} key={index}/>
-                ))}
-            <br />
-
-            {multyTasks.map( ({ a, type1, b, type2, c } , index) => (
+            {tasks.map( ({ a, type1, b, type2, c } , index) => (
                 <Task23Arg a={a} type1={type1} b={b} type2={type2} c={c} key={index}/>
             ))}
         </div>
@@ -55,7 +45,8 @@ class ShowForm extends React.PureComponent {
         while (true) {
             task.a = Math.floor(+minPlus + Math.random() * (maxPlus - minPlus + 1)  );
             task.b = Math.floor(+minPlus + Math.random() * (maxPlus - minPlus + 1)  );
-            
+            task.type1 = '+';
+
             // Проверяем, чтобы цифры были не одинаковые
             if (task.a !== task.b || +minPlus === +maxPlus) {
                 return task; // Возвращаем готовый приимер
@@ -65,19 +56,28 @@ class ShowForm extends React.PureComponent {
 
     createPlusTasks = () => {
         const { qualPlusTasks, minPlus, maxPlus } = this.state;
-        let arr = [], task = {};
+        let arr = [], task = {}, result = true;
+
         if (!qualPlusTasks) return;
         
         for(let i=0; i < qualPlusTasks; i++) {
             task = this.createPlus(minPlus, maxPlus);
             
             // Проверки на корректность
-            if (true) {
+            for(let item of arr) {
+                if (item.a === task.a && item.b === task.b) {
+                    console.log('Дубликат примера: ', item.a , '/', item.b );
+                    result = false;
+                }
+            }
+            if (result) {
                 arr.push(task); 
                 i++;
             }
             i--;
             task = {};
+            result = true;
+
         }
         return arr; // Возвращаем готовые приимеры
     }
@@ -97,6 +97,7 @@ class ShowForm extends React.PureComponent {
         while (true) {
             task.a = Math.floor(+minMinus + Math.random() * (maxMinus - minMinus + 1) );
             task.b = Math.floor(+minMinus + Math.random() * (task.a - minMinus + 1) );
+            task.type1 = '-';
             
             // Проверяем, чтобы цифры были не одинаковые
             if (task.a !== task.b || +minMinus === +maxMinus) {
@@ -111,17 +112,24 @@ class ShowForm extends React.PureComponent {
         const { qualMinusTasks, minMinus, maxMinus } = this.state;
         if (!qualMinusTasks) return;
 
-        let arr = [], task = {};
+        let arr = [], task = {}, result = true;
 
         for(let i=0; i < qualMinusTasks; i++) {
             task = this.createMinus(minMinus, maxMinus);
             // Проверки на корректность
-            if (true) {
+            for(let item of arr) {
+                if (item.a === task.a && item.b === task.b) {
+                    console.log('Дубликат примера: ', item.a , '/', item.b );
+                    result = false;
+                }
+            }
+            if (result) {
                 arr.push(task); 
                 i++;
             }
             i--;
             task = {};
+            result = true;
         }
         return arr; // Возвращаем готовые приимеры
     }
@@ -207,7 +215,7 @@ class ShowForm extends React.PureComponent {
     // ЗАПУСК
     create = event => {
         event.preventDefault();
-        this.props.callback( this.createPlusTasks(), this.createMinusTasks(), this.createMultyTasks() );
+        this.props.callback( [ ...this.createPlusTasks(), ...this.createMinusTasks(), ...this.createMultyTasks() ]  );
     }
     
 
@@ -253,7 +261,7 @@ class ShowForm extends React.PureComponent {
                         <div className={s.title}>Задачи в 2 действия</div>
                         <label>Сколько создать 
                             <input type="number"  className={s.inputMaxMin}
-                                value={this.state.qualMinusTasks}
+                                value={this.state.qualMultyTasks}
                                 onChange={this.changeQualMulty} />
                         </label>
                         <label>Числа от
@@ -281,20 +289,14 @@ class Tasks extends React.PureComponent {
     state = {
         isDone: true, // Показ формы
         isTasks: false, // Вывод примеров
-        plusTasks: [],
-        minusTasks: [],
-        multyTasks: [],
-
+        tasks: [], // Массив примеров
     }
 
-    handleTasks = (plusTasks, minusTasks, multyTasks) => {
-        console.log('TASK minusTasks: ', minusTasks);
-        console.log('TASK plusTasks: ', plusTasks);
-        console.log('TASK multyTasks: ', multyTasks);
-
+    setTasks = arr => {
+        console.log('TASK arr: ', arr);
 
         this.setState({
-            plusTasks, minusTasks, multyTasks,
+            tasks: arr,
             isDone: false,
             isTasks: true,
         })
@@ -302,14 +304,14 @@ class Tasks extends React.PureComponent {
 
 
     render() {
-        const { isDone, isTasks, plusTasks, minusTasks, multyTasks  } = this.state;
+        const { isDone, isTasks, tasks  } = this.state;
         
         return (
             <>
                 {/* Выводим начальную форму */}
-                { isDone && <ShowForm callback={this.handleTasks}/> }
+                { isDone && <ShowForm callback={this.setTasks}/> }
                 {/* Выводим готовые примеры */}
-                { isTasks && <ShowTasks plusTasks={plusTasks} minusTasks={minusTasks} multyTasks={multyTasks}/> }
+                { isTasks && <ShowTasks tasks={tasks} /> }
                 {/* Кнопка "начать заново" */}
                 <br />
                 { isTasks && <input type="button" onClick={() => this.setState({isDone: true, isTasks: false,})} value="Заново" className={s.input}/> }

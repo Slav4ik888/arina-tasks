@@ -5,7 +5,7 @@ import s from './task-2-3-arg.module.css';
 const Task23Arg = ({ a, type1, b, type2, c}) => {
 	let task = '';
 	if (!type2) task = `${a} ${type1} ${b} = `;
-	if (type2) task = `${a} ${type1} ${b} ${type2} ${c} = `;
+	if (type2) task = `${a} ${type1} ${b} ${type2} ${c} =`;
 
 
 	return (
