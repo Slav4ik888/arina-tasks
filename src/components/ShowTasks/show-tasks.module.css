@@ -1,0 +1,14 @@
+.section {
+  display: flex;
+  height: max-content;
+  flex-wrap: wrap; 
+  /* flex-direction: row; */
+  /* align-items: center;  */
+  justify-content: flex-start; 
+  width: 1040px;
+  /* margin: 0 auto; */
+  /* padding-top: 50px; */
+  /* text-align: left; */
+  /* background-color: rgb(83, 117, 117); */
+
+}
