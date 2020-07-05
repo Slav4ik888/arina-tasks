@@ -8,7 +8,6 @@ import {createMinusTasks} from '../../utils/create-minus-tasks.js';
 import {createMultyTasks} from '../../utils/create-multy-tasks.js';
 
 
-
 class ShowForm extends React.PureComponent {
 
     state = {
