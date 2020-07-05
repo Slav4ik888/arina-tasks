@@ -1,14 +1,13 @@
 import React from 'react';
 import s from './header.module.css';
+import {showDate} from '../../utils/dates.js';
 
-const today = () => {
-  
-  let day = new Date();
-  return day;
-}
+const today = showDate(new Date().getTime(), `DD-MM-YYYY`);
+
+
 // Рендер карточек
 export const Header = () => {
-  console.log('today: ', today());
+  // console.log('today: ', today());
 
   return (
     <div className={s.section}>
@@ -34,20 +33,20 @@ export const Header = () => {
 
       <div className={s.card}>
         <div className={s.days}>
-          <div className={s.day}>2</div>
-          <div className={s.day}>5</div>
+          <div className={s.day}>{today[0]}</div>
+          <div className={s.day}>{today[1]}</div>
         </div>
         .
         <div className={s.days}>
-          <div className={s.day}>0</div>
-          <div className={s.day}>6</div>
+          <div className={s.day}>{today[3]}</div>
+          <div className={s.day}>{today[4]}</div>
         </div>
         .
         <div className={s.year}>
-          <div className={s.day}>2</div>
-          <div className={s.day}>0</div>
-          <div className={s.day}>2</div>
-          <div className={s.day}>0</div>
+          <div className={s.day}>{today[6]}</div>
+          <div className={s.day}>{today[7]}</div>
+          <div className={s.day}>{today[8]}</div>
+          <div className={s.day}>{today[9]}</div>
         </div>
       </div>
       <div className={s.line}></div>

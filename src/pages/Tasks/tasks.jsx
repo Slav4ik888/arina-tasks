@@ -20,7 +20,7 @@ class ShowForm extends React.PureComponent {
         minMinus: 3,       // От 
         maxMinus: 13,       // До
 
-        qualMultyTasks: 10, // Кол-во примеров сложения
+        qualMultyTasks: 12, // Кол-во примеров сложения
         minMulty: 3,       // От 
         maxMulty: 8,       // До
     }

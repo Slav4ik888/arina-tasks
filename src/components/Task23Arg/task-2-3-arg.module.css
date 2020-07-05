@@ -17,15 +17,21 @@
 
     color:  #4d3601;
     font-size: 30px;
-    width: 200px;
+    width: 180px;
 }
 
 .result{
-    width: 40px;
-    height: 40px;
-    padding-right: 20px;
-    margin-top:3px;
-    margin-left: 10px;
+    display: flex;
+    flex-wrap: wrap; 
+}
+
+.arg {
+    width: 35px;
+    height: 50px;
+    margin-right: 3px;
     background-color: #fdfdfd;
     border: 1px dotted rgb(146, 146, 146);
-}
+    text-align: center;
+    align-items: center; 
+    font-size: 40px;
+  }

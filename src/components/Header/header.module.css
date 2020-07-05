@@ -38,22 +38,22 @@
   display: flex;
   flex-wrap: wrap; 
   margin-left: 7px;
-  /* justify-content: center; */
-
-  /* background-color: #967070; */
 }
 
 .day {
   width: 35px;
   height: 50px;
-  margin-left: 3px;
+  /* margin-left: 3px; */
   background-color: #fdfdfd;
   border: 1px dotted rgb(146, 146, 146);
+  /* justify-content: center; */
+
   text-align: center;
   align-items: center; 
-  
+  font-size: 50px;
+  line-height: 50px;
+  /* background-color: #967070; */
 
-  font-size: 40px;
 }
 
 .year{
