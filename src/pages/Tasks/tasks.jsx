@@ -1,5 +1,5 @@
 import React from 'react';
-import s from './tasks.module.css';
+import s from './tasks1.module.css';
 import {ShowTasks} from '../../components/ShowTasks/show-tasks.jsx';
 import {Header} from '../../components/Header/header.jsx';
 
