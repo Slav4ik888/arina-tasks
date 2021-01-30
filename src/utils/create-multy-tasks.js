@@ -7,7 +7,8 @@ export const createMultyTasks = (qualMultyTasks, minMulty, maxMulty) => {
 
   let arr = [], task = {}, task1 = {}, task2 = {};
 
-  for(let i=0; i < qualMultyTasks; i++) {
+  for (let i = 0; i < qualMultyTasks; i++) {
+    
     // Определяем тип первого действия и создаём его
     if (Math.round(Math.random()) === 0) {
       task1 = createPlus(minMulty, maxMulty);
@@ -40,13 +41,13 @@ export const createMultyTasks = (qualMultyTasks, minMulty, maxMulty) => {
         } else {
           task2 = createMinus(minMulty, remains);
           task2.type = '-';
-          console.log('remains task2 "-": ', task2);
+          // console.log('remains task2 "-": ', task2);
         }
       } else {
 
           task2 = createMinus(minMulty, maxMulty);
           task2.type = '-';
-          console.log('task2 "-": ', task2);
+          // console.log('task2 "-": ', task2);
       }
     };
     
@@ -62,6 +63,7 @@ export const createMultyTasks = (qualMultyTasks, minMulty, maxMulty) => {
       arr.push(task); 
       i++;
     }
+
     i--;
     task = {}; task1 = {}; task2 = {};
   }

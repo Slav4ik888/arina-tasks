@@ -1,12 +1,31 @@
 import React from 'react';
 import s from './tasks1.module.css';
-import {ShowTasks} from '../../components/ShowTasks/show-tasks.jsx';
-import {Header} from '../../components/Header/header.jsx';
+import {ShowTasks} from '../show-tasks/show-tasks1.jsx';
+import {Header} from '../tasks-container-header/tasks-container-header.jsx';
 
 import {createPlusTasks} from '../../utils/create-plus-tasks.js';
-import {createMinusTasks} from '../../utils/create-minus-tasks.js';
+import {createMinusTasks} from '../../utils/create-minus-tasks1.js';
 import {createMultyTasks} from '../../utils/create-multy-tasks.js';
 
+
+const useStyle = makeStyles((theme) => ({
+  body: {
+    height: `100vh`,
+    display: `flex`,
+    flexDirection: `column`,
+  },
+  container: {
+    width: `70%`,
+    margin: `auto`,
+  },
+  header: {
+    display: `flex`,
+    flexDirection: `column`,
+    alignItems: `center`,
+    justifyContent: `space-between`,
+    margin: theme.spacing(2, 0),
+  },
+}));
 
 class ShowForm extends React.PureComponent {
 

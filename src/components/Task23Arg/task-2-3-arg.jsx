@@ -8,6 +8,7 @@ const Task23Arg = ({ a, type1, b, type2, c}) => {
 	let task = '';
 	if (!type2) task = `${a} ${type1} ${b} = `;
 	if (type2) task = `${a} ${type1} ${b} ${type2} ${c} =`;
+	
 	const styleCover = task.length > 11 ? { fontSize: '24px'} : {};
 
 	return (

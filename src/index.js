@@ -1,12 +1,19 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+// MUI Stuff
+import { ThemeProvider } from '@material-ui/core/styles';
+import createMuiTheme from '@material-ui/core/styles/createMuiTheme';
+import themeFile from './theme';
+
+// Components
 import App from './App';
 
-import './index.css';
-import 'antd/dist/antd.css';
 
+const theme = createMuiTheme(themeFile);
 
 ReactDOM.render(
-    <App />,
+    <ThemeProvider theme={theme}>
+      <App />
+    </ThemeProvider>,
   document.getElementById('root')
 );
