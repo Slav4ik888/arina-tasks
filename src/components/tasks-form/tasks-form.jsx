@@ -40,7 +40,6 @@ const useStyle = makeStyles((theme) => ({
 
 
 const TasksForm = ({ onSetTasks, store }) => {
-  console.log('store: ', store);
 
   const classes = useStyle();
   const [error, setError] = useState({ message: ``, id: `` });

@@ -47,6 +47,7 @@ const TasksFormElem = ({ id, title, qual, min, max, onChangeQual, onChangeMin, o
     if (error.id === id) {
       setAnchorEl(error.anchorEl);
     }
+  // eslint-disable-next-line
   }, [error]);
 
   const handleClose = () => {
