@@ -58,4 +58,4 @@ const App = () => {
 }
 
 export default App;
-//  git add . && git commit -m "Navbar" && git push origin master
+//  git add . && git commit -m "fix Navbar" && git push origin master
