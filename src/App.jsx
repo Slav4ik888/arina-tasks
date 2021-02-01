@@ -1,27 +1,22 @@
 import React from 'react';
+import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
+import route from './routes';
 // MUI Stuff
 import { makeStyles } from '@material-ui/core/styles';
+// Pages
+import Home from './pages/home';
+import CreateTasks from './pages/create-tasks';
 // Components
-import TasksContainer from './components/tasks-container/tasks-container';
+import Navbar from './components/navbar/navbar';
 import Footer from './components/footer/footer';
 
 
 const useStyle = makeStyles((theme) => ({
   body: {
-    // height: `100vh`,
     display: `flex`,
     flexDirection: `column`,
-  },
-  container: {
-    // width: `70%`,
-    margin: `auto`,
-  },
-  header: {
-    display: `flex`,
-    flexDirection: `column`,
-    alignItems: `center`,
-    justifyContent: `space-between`,
-    margin: theme.spacing(2, 0),
+    minHeight: `500px`,
+    // height: `80vh`,
   },
 }));
 
@@ -31,17 +26,36 @@ const App = () => {
   const classes = useStyle();
 
   return (
-    <div className={classes.body}>
-      <div className={classes.container}>
-        <div className={classes.header}>  
-          <TasksContainer />
-        </div>
+    <Router>
+      <div className={classes.body}>
+        <Navbar />
+
+        <Switch>
+          <Route exact path={route.HOME} component={Home} />
+          <Route exact path={route.CREATE_TASKS} component={CreateTasks} />
+          <Route exact path={route.ROOT} />
+
+          <Route
+            render={() => (
+              <>
+                <h1>
+                  404.
+                  <br />
+                  <small>Page not found</small>
+                </h1>
+                <Redirect to={route.ROOT} />
+              </>
+            )}
+          />
+        </Switch>
       </div>
 
       <Footer> © 2021 Created by Slav4ik888</Footer>
-    </div>  
+
+    </Router>
+
   );
 }
 
 export default App;
-//  git add . && git commit -m "fix big refactor" && git push origin master
+//  git add . && git commit -m "Navbar" && git push origin master

@@ -1,4 +1,7 @@
 import React, { useState } from 'react';
+// Readux Stuff
+import { connect } from 'react-redux';
+import { ActionCreator } from '../../services/reducer';
 // Components
 import ShowTasks from '../show-tasks/show-tasks.jsx';
 import TasksForm from '../tasks-form/tasks-form';
@@ -6,7 +9,7 @@ import { getLocalStorage, setLocalStorage } from '../../utils/storage';
 
 
 // Главный управляющий элемент
-const TasksContainer = () => {
+const TasksContainer = ({ handleSetNavbarOn, handleSetNavbarOff }) => {
 
   const [store, setStore] = useState(getLocalStorage(`arina-task`));
 
@@ -18,11 +21,13 @@ const TasksContainer = () => {
     setIsForm(false);
     setLocalStorage(`arina-task`, newStore);
     setStore(newStore);
+    handleSetNavbarOff();
   };
 
   const handleClearTasks = () => {
     setTasks([]);
     setIsForm(true);
+    handleSetNavbarOn();
   };
 
 
@@ -39,6 +44,15 @@ const TasksContainer = () => {
       }
     </>
   )
-}
+};
 
-export default TasksContainer;
+const mapDispatchToProps = (dispatch) => ({
+  handleSetNavbarOff() {
+    dispatch(ActionCreator.setNavbarOff());
+  },
+  handleSetNavbarOn() {
+    dispatch(ActionCreator.setNavbarOn());
+  },
+});
+
+export default connect(undefined, mapDispatchToProps)(TasksContainer);
