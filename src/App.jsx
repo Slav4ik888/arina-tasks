@@ -63,4 +63,4 @@ const App = () => {
 }
 
 export default App;
-//  git add . && git commit -m "create schedule" && git push origin master
+//  git add . && git commit -m "fix schedule" && git push origin master

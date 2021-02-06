@@ -4,7 +4,7 @@ export const mockTodoList = [
     title: `Сказбука`,
   }, {
     id: 2,
-    title: `Примеры`,
+    title: `Математика`,
   }, {
     id: 3,
     title: `Рисование`,
