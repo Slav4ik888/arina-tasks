@@ -5,9 +5,9 @@ import Card from '@material-ui/core/Card';
 import Button from '@material-ui/core/Button';
 // Components
 import TasksFormElem from '../tasks-form-elem/tasks-form-elem';
-import { createPlusTasks } from '../../utils/create-plus-tasks.js';
-import { createMinusTasks } from '../../utils/create-minus-tasks.js';
-import { createMultyTasks } from '../../utils/create-multy-tasks.js';
+import { createPlusTasks } from '../../../utils/create-plus-tasks.js';
+import { createMinusTasks } from '../../../utils/create-minus-tasks.js';
+import { createMultyTasks } from '../../../utils/create-multy-tasks.js';
 
 
 const useStyle = makeStyles((theme) => ({
@@ -39,9 +39,11 @@ const useStyle = makeStyles((theme) => ({
 }));
 
 
+// Форма для выбора условий и создания примеров
 const TasksForm = ({ onSetTasks, store }) => {
-
+  
   const classes = useStyle();
+
   const [error, setError] = useState({ message: ``, id: `` });
 
   // СЛОЖЕНИЕ
@@ -62,7 +64,7 @@ const TasksForm = ({ onSetTasks, store }) => {
     const anchorEl = e.currentTarget;
 
     if (v > 0 && v < 100 && v < maxPlus) {
-      setMinPlus(v);console.log('v: ', v);
+      setMinPlus(v);
     } else {
       setError({ message: `Число "от" должно быть < числа "до" и любое число должно быть > 0 и < 100`, id: `plus`, anchorEl });
     }
@@ -73,9 +75,9 @@ const TasksForm = ({ onSetTasks, store }) => {
     const anchorEl = e.currentTarget;
 
     if (v > 0 && v < 100 && v > minPlus) {
-      setMaxPlus(e.target.value);console.log('v: ', v);
+      setMaxPlus(e.target.value);
     } else {
-      setError({ message: `Число "до" должно быть > числа "от" и любое число должно быть > 0 и < 100, `, id: `plus`, anchorEl });
+      setError({ message: `Число "до" должно быть > числа "от" и любое число должно быть > 0 и < 100`, id: `plus`, anchorEl });
     }
   };
 
@@ -110,7 +112,7 @@ const TasksForm = ({ onSetTasks, store }) => {
     if (v > 0 && v < 100 && v > minMinus) {
       setMaxMinus(e.target.value);
     } else {
-      setError({ message: `Число "до" должно быть > числа "от" и любое число должно быть > 0 и < 100, `, id: `minus`, anchorEl });
+      setError({ message: `Число "до" должно быть > числа "от" и любое число должно быть > 0 и < 100`, id: `minus`, anchorEl });
     }
   };
 

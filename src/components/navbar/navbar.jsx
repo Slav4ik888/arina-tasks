@@ -51,7 +51,11 @@ const Navbar = ({ navbar }) => {
           </Link>
 
           <Link to={route.CREATE_TASKS} >
-            <Button color="inherit" className={classes.button}>Создать примеры</Button>
+            <Button color="inherit" className={classes.button}>Примеры</Button>
+          </Link>
+
+          <Link to={route.CREATE_SCHEDULE} >
+            <Button color="inherit" className={classes.button}>Расписание</Button>
           </Link>
 
         </Toolbar>

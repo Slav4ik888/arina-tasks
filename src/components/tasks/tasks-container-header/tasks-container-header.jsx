@@ -1,8 +1,8 @@
 import React from 'react';
-import {showDate} from '../../utils/dates.js';
-
 // MUI Stuff
 import { makeStyles } from '@material-ui/core/styles';
+// Functions
+import {showDate} from '../../../utils/dates.js';
 
 
 const useStyle = makeStyles((theme) => ({

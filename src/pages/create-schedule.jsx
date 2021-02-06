@@ -2,7 +2,7 @@ import React from 'react';
 // MUI Stuff
 import { makeStyles } from '@material-ui/core/styles';
 // Components
-import TasksContainer from '../components/tasks/tasks-container/tasks-container';
+import ScheduleContainer from '../components/schedule/schedule-container/schedule-container';
 
 
 const useStyle = makeStyles((theme) => ({
@@ -19,17 +19,19 @@ const useStyle = makeStyles((theme) => ({
 }));
 
 
-const CreateTasks = () => {
+const CreateSchedule = () => {
 
   const classes = useStyle();
+
+
 
   return (
     <div className={classes.container}>
       <div className={classes.box}>  
-        <TasksContainer />
+        <ScheduleContainer />
       </div>
     </div>
   );
 }
 
-export default CreateTasks;
+export default CreateSchedule;

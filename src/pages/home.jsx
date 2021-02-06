@@ -2,6 +2,7 @@ import React from 'react';
 // MUI Stuff
 import { makeStyles } from '@material-ui/core/styles';
 // Components
+// Functions
 
 
 const useStyle = makeStyles((theme) => ({

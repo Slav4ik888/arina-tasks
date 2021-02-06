@@ -16,6 +16,7 @@ export default {
       contrastText: `#ffffff`,
     },
     fontColor: {
+      todo: ``,
       document: ``,
       section: ``,
       ruleTitle: `#aa2e25`,
@@ -44,12 +45,15 @@ export default {
     },
   },
   fontSize: {
+    todo: `18px`,
+    todoList: `15px`,
     document: `28px`,
     section: `24px`,
     ruleTitle: `18px`,
     rule: `14px`,
   },
   fontWeight: {
+    todo: ``,
     document: ``,
     section: ``,
     ruleTitle: `bold`,
@@ -87,7 +91,7 @@ export default {
   customError: {
     color: `red`,
     fontSize: `0.8rem`,
-    marginTop: 10,
+    marginTop: `10px`,
   },
   progress: {
     position: `absolute`,

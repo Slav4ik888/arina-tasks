@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 // Readux Stuff
 import { connect } from 'react-redux';
-import { ActionCreator } from '../../services/reducer';
+import { ActionCreator } from '../../../services/reducer';
 // Components
 import ShowTasks from '../show-tasks/show-tasks.jsx';
 import TasksForm from '../tasks-form/tasks-form';
-import { getLocalStorage, setLocalStorage } from '../../utils/storage';
+import { getLocalStorage, setLocalStorage } from '../../../utils/storage';
 
 
 // Главный управляющий элемент
@@ -33,12 +33,9 @@ const TasksContainer = ({ handleSetNavbarOn, handleSetNavbarOff }) => {
 
   return (
     <>
-      {/* Выводим начальную форму */}
       {
         isForm && <TasksForm onSetTasks={handleSetTasks} store={store} />
       }
-
-      {/* Выводим готовые примеры */}
       {
         !isForm && <ShowTasks tasks={tasks} onClearTasks={handleClearTasks} />
       }

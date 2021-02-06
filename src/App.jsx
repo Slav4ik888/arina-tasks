@@ -1,15 +1,19 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
-import route from './routes';
 // MUI Stuff
 import { makeStyles } from '@material-ui/core/styles';
 // Pages
 import Home from './pages/home';
 import CreateTasks from './pages/create-tasks';
+import CreateSchedule from './pages/create-schedule';
 // Components
 import Navbar from './components/navbar/navbar';
 import Footer from './components/footer/footer';
+// Functions
+import route from './routes';
 
+// import { Redirect } from 'react-router-dom';
+// return <Redirect to={route.CREATE_SCHEDULE} />;
 
 const useStyle = makeStyles((theme) => ({
   body: {
@@ -33,6 +37,7 @@ const App = () => {
         <Switch>
           <Route exact path={route.HOME} component={Home} />
           <Route exact path={route.CREATE_TASKS} component={CreateTasks} />
+          <Route exact path={route.CREATE_SCHEDULE} component={CreateSchedule} />
           <Route exact path={route.ROOT} />
 
           <Route
@@ -58,4 +63,4 @@ const App = () => {
 }
 
 export default App;
-//  git add . && git commit -m "fix Navbar" && git push origin master
+//  git add . && git commit -m "create schedule" && git push origin master
