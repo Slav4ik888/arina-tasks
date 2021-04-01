@@ -16,11 +16,16 @@ import route from './routes';
 // return <Redirect to={route.CREATE_SCHEDULE} />;
 
 const useStyle = makeStyles((theme) => ({
+  mainPage: {
+    margin: `0 auto`,
+    minHeight: `100%`,
+    height: `100vh`,
+  },
   body: {
     display: `flex`,
     flexDirection: `column`,
-    minHeight: `500px`,
-    // height: `80vh`,
+    // minHeight: `500px`,
+    minHeight: `calc(100% - 64px)`,
   },
 }));
 
@@ -30,35 +35,37 @@ const App = () => {
   const classes = useStyle();
 
   return (
-    <Router>
-      <div className={classes.body}>
-        <Navbar />
+    <div className={classes.mainPage}>
 
-        <Switch>
-          <Route exact path={route.HOME} component={Home} />
-          <Route exact path={route.CREATE_TASKS} component={CreateTasks} />
-          <Route exact path={route.CREATE_SCHEDULE} component={CreateSchedule} />
-          <Route exact path={route.ROOT} />
+      <Router>
+        <div className={classes.body}>
+          <Navbar />
 
-          <Route
-            render={() => (
-              <>
-                <h1>
-                  404.
-                  <br />
-                  <small>Page not found</small>
-                </h1>
-                <Redirect to={route.ROOT} />
-              </>
-            )}
-          />
-        </Switch>
-      </div>
+          <Switch>
+            <Route exact path={route.HOME} component={Home} />
+            <Route exact path={route.CREATE_TASKS} component={CreateTasks} />
+            <Route exact path={route.CREATE_SCHEDULE} component={CreateSchedule} />
+            <Route exact path={route.ROOT} />
 
-      <Footer> © 2021 Created by Slav4ik888</Footer>
+            <Route
+              render={() => (
+                <>
+                  <h1>
+                    404.
+                    <br />
+                    <small>Page not found</small>
+                  </h1>
+                  <Redirect to={route.ROOT} />
+                </>
+              )}
+            />
+          </Switch>
+        </div>
 
-    </Router>
+        <Footer> © 2021 Created by Slav4ik888</Footer>
 
+      </Router>
+    </div>
   );
 }
 

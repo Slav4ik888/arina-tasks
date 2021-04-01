@@ -1,6 +1,8 @@
 import React from 'react';
 // MUI Stuff
 import { makeStyles } from '@material-ui/core/styles';
+// Components
+import GenerateDay from '../generate-day/generate-day';
 // Functions
 import {showDate} from '../../../utils/dates.js';
 
@@ -10,9 +12,6 @@ const useStyle = makeStyles((theme) => ({
     display: `flex`,
     flexDirection: `column`,
     alignItems: `flex-start`,
-    // height: `max-content`,
-    // flexWrap: `wrap`, 
-    // justifyContent: `right`,
     width: `100%`,
   },
   cards: {
@@ -20,7 +19,6 @@ const useStyle = makeStyles((theme) => ({
     flexDirection: `row`,
 
   },
-  
   card: {
     display: `flex`,
     flexWrap: `wrap`, 
@@ -42,16 +40,6 @@ const useStyle = makeStyles((theme) => ({
     flexWrap: `wrap`, 
     marginLeft: `7px`,
   },
-  day: {
-    width: `35px`,
-    height: `50px`,
-    backgroundColor: `#fdfdfd`,
-    border: `1px dotted rgb(146, 146, 146)`,
-    textAlign: `center`,
-    alignItems: `center`, 
-    fontSize: `50px`,
-    lineHeight: `50px`,
-  },
   dot: {
   },
   line: {
@@ -70,36 +58,35 @@ const TasksContainerHeader = () => {
 
   const classes = useStyle();
 
-  const generateDay = (day) => <div className={classes.day}>{day}</div>;
-
   const generateDateCard = (date) => (
     <div className={classes.card}>
       <div className={classes.days}>
         {
-          date.slice(0, 2).map((day, i) => <div key={`${day} + ${i}`}>{generateDay(day)}</div>)
+          date.slice(0, 2).map((day, i) => <div key={i}>{GenerateDay(day)}</div>)
         }
       </div>
       <span className={classes.dot}>.</span>
 
       <div className={classes.days}>
         {
-          date.slice(3, 5).map((day, i) => <div key={`${day} + ${i}`}>{generateDay(day)}</div>)
+          date.slice(3, 5).map((day, i) => <div key={`${day} + ${i}`}>{GenerateDay(day)}</div>)
         }
       </div>
       <span className={classes.dot}>.</span>
       <div className={classes.year}>
         {
-          date.slice(6).map((day, i) => <div key={`${day} + ${i}`}>{generateDay(day)}</div>)
+          date.slice(6).map((day, i) => <div key={`${day} + ${i}`}>{GenerateDay(day)}</div>)
         }
       </div>
     </div>
   );
+  
 
   return (
     <div className={classes.section}>
       <div className={classes.cards}>
         {
-          generateDateCard([``, ``, ``, ``, ``, ``, ``, ``, ``, ``])
+          generateDateCard([...new Array(10)].map(() => null))
         }
 
         {
