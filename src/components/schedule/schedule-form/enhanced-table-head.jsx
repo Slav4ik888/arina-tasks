@@ -7,7 +7,7 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 // import Checkbox from '@material-ui/core/Checkbox';
 // Functions
-import { headCells } from '../schedule-utils';
+import { headCells } from '../../../features/schedule/utils';
 
 
 const StyledTableCell = withStyles((theme) => ({

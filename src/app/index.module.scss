@@ -1,0 +1,12 @@
+.main-page {
+  margin: 0 auto;
+  min-height: 100%;
+  height: 100vh;
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+  // minHeight: `500px`;
+  min-height: calc(100% - 64px);
+}

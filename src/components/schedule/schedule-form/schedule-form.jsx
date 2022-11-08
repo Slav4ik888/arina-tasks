@@ -20,7 +20,7 @@ import EnhancedTableHead from './enhanced-table-head';
 import EnhancedTableToolbar from './enhanced-table-toolbar';
 import TodoContainer from '../../todos/todo-container/todo-container';
 // Functions
-import { emptyTodos, getUpdatedWeek } from '../schedule-utils';
+import { emptyTodos, getUpdatedWeek } from '../../../features/schedule/utils';
 
 const StyledCell = withStyles((theme) => ({
   body: {

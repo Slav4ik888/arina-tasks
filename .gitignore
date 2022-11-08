@@ -1,6 +1,4 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
-yarn.lock
-package-lock.json
 .idea
 .env
 
@@ -26,5 +24,3 @@ package-lock.json
 .env.production.local
 
 npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
