@@ -22,13 +22,23 @@ export interface TodoRow {
   sunday    : Todo
 }
 
-export type TodoList = Array<Todo>;
+export interface ScheduleError {
+  [k: string]: string
+}
 
-export type Schedule = TodoRow[];
+export interface TodoListItem {
+  id    : number
+  title : string
+}
+
+export type TodoList = Array<TodoListItem>
+
+export type Schedule = TodoRow[]
 
 export interface StateSchedule {
-  schedule: Schedule
-  todoList: TodoList
+  error    : ScheduleError
+  schedule : Schedule
+  todoList : TodoList
 }
 
 

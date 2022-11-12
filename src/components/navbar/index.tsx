@@ -17,8 +17,8 @@ const useStyles = () => ({
     // flexGrow: 1,
   },
   button: {
-    ml: 8,
-  },
+    ml: 8
+  }
 });
 
 const Navbar:FC = memo(() => {
@@ -35,7 +35,7 @@ const Navbar:FC = memo(() => {
         <MenuIcon sx={sx.menuButon} />
         <Link to={RoutePath.ROOT} >
           <Typography variant="h6" sx={sx.logo}>
-              Задачкин
+            Задачкин
           </Typography>
         </Link>
 

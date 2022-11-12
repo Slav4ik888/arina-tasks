@@ -1,7 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit'
 import { navbarReducer } from 'features/navbar';
 import { scheduleReducer } from 'features/schedule';
-import { todoReducer } from 'features/todo';
 import { State } from './state';
 
 
@@ -11,7 +10,6 @@ export function createReduxStore(
 
   const rootReducers = {
     navbar   : navbarReducer,
-    todo     : todoReducer,
     schedule : scheduleReducer
   };
 

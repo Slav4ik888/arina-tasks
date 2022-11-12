@@ -27,10 +27,10 @@ const useStyle = (theme: Theme) => ({
 
 
 type Props = {
-  children: ReactNode
+  children: ReactNode | string
 }
 
-const Footer: FC = memo(({ children }: Props) => {
+const Footer: FC<Props> = memo(({ children }: Props) => {
   const sx = useStyle(useTheme() as Theme);
 
   return (

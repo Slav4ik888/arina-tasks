@@ -1,4 +1,4 @@
-import { FC, useState } from 'react';
+import { FC, useCallback, useState } from 'react';
 // Readux Stuff
 import { useSelector } from 'react-redux';
 import { useAppDispatch } from 'shared/lib/hooks';
@@ -20,38 +20,38 @@ const ScheduleContainer: FC = () => {
     dispatch = useAppDispatch();
 
 
-  const handlerUpdateSchedule = (updatedSchedule: Schedule) => {
+  const handlerUpdateSchedule = useCallback((updatedSchedule: Schedule) => {
     console.log('updatedSchedule: ', updatedSchedule);
     dispatch(scheduleActions.setSchedule(updatedSchedule));
-  };
+  }, []);
 
 
-  const handlerSaveSchedule = (savedSchedule: Schedule) => {
+  const handlerSaveSchedule = useCallback((savedSchedule: Schedule) => {
     console.log('savedSchedule: ', savedSchedule);
     dispatch(scheduleActions.setSchedule(savedSchedule));
     LS.setSchedule(savedSchedule);
-  };
+  }, []);
 
 
-  const handlerPrintSchedule = (schedule: Schedule) => {
+  const handlerPrintSchedule = useCallback((schedule: Schedule) => {
     console.log('printSchedule: ', schedule);
     handlerSaveSchedule(schedule);
     setIsForm(false);
     dispatch(navbarActions.setStatus(false));
-  };
+  }, []);
   
 
-  const handlerClearSchedule = () => handlerSaveSchedule(EMPTY_SCHEDULE);
+  const handlerClearSchedule = useCallback(() => handlerSaveSchedule(EMPTY_SCHEDULE), []);
 
 
   return (
     <>
       {
         isForm && <ScheduleForm
-          onUpdateSchedule={handlerUpdateSchedule}
-          onSaveSchedule={handlerSaveSchedule}
-          onPrintSchedule={handlerPrintSchedule}
-          onClearSchedule={handlerClearSchedule}
+          onUpdateSchedule = {handlerUpdateSchedule}
+          onSaveSchedule   = {handlerSaveSchedule}
+          onPrintSchedule  = {handlerPrintSchedule}
+          onClearSchedule  = {handlerClearSchedule}
         />
       }
       

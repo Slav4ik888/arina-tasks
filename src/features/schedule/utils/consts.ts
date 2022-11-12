@@ -1,7 +1,3 @@
-import { createEmptySchedule } from '.';
-import { Schedule } from '..';
-import { Time } from '../module/types';
-
 
 export const headCells = [
   { id: 'time',      numeric: false, disablePadding: true, label: 'Время', weekend: false, width: 50 },
@@ -13,6 +9,3 @@ export const headCells = [
   { id: 'saturday',  numeric: false, disablePadding: true, label: 'СБ',    weekend: true,  width: 150 },
   { id: 'sunday',    numeric: false, disablePadding: true, label: 'ВС',    weekend: true,  width: 150 }
 ];
-
-export const EMPTY_SCHEDULE: Schedule = createEmptySchedule();
-export const TIMES = Object.entries(Time);

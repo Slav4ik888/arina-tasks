@@ -7,7 +7,7 @@ describe('selectScheduleSchedule', () => {
   test('Return scheduleSchedule', () => {
     const
       schedule = {
-        schedule: [`123`]
+        schedule: [`123`] as unknown as Schedule
       },
       state: DeepPartial<State> = {
         schedule

@@ -5,7 +5,7 @@ export const theme = {
       light: `#f8ffd7`, 
       main: `#c5e1a5`,
       dark: `#94af76`,
-      contrastText: `#000000`,
+      contrastText: `#000000`
     },
     secondary: {
       ultralight: `#fff6f3`,
@@ -13,7 +13,7 @@ export const theme = {
       main: `#ffe082`,
       dark: `#caae53`,
       ultradark: `#4b2c20`,
-      contrastText: `#ffffff`,
+      contrastText: `#ffffff`
     },
     fontColor: {
       todo: ``,
@@ -23,7 +23,7 @@ export const theme = {
       rule: `#666666`,
       noAnswer: `##37474f`,
       rightAnswer: `#64dd17`,
-      wrongAnswer: `#ff3d00`,
+      wrongAnswer: `#ff3d00`
     },
     background: {
       default: `#e4e9ea`, // Для body #ebecf0  
@@ -41,8 +41,8 @@ export const theme = {
       sectionIcon: `#b3b9bf`,
       sectionIconHover: `#62727b`,
       moduleAdd: `#e0e0e0`,
-      moduleAddInput: `#F5F5F5`,
-    },
+      moduleAddInput: `#F5F5F5`
+    }
   },
   fontSize: {
     todo: `18px`,
@@ -50,52 +50,52 @@ export const theme = {
     document: `28px`,
     section: `24px`,
     ruleTitle: `18px`,
-    rule: `14px`,
+    rule: `14px`
   },
   fontWeight: {
     todo: ``,
     document: ``,
     section: ``,
     ruleTitle: `bold`,
-    rule: ``,
+    rule: ``
   },
   border: {
     light: `#ececec`,
-    answer: `#b3b9bf`,
+    answer: `#b3b9bf`
   },
   typography: {
     useNextVariants: true
   },
   textPrimary: {
-    color: `#1e3331`,
+    color: `#1e3331`
   },
   textSecondary: {
     color: `#808080`
   },
   form: {
-    textAlign: `center`,
+    textAlign: `center`
   },
   pageTitle: {
-    margin: `10px auto 10px auto`,
+    margin: `10px auto 10px auto`
   },
   image: {
-    margin: `20px auto 20px auto`,
+    margin: `20px auto 20px auto`
   },
   textField: {
-    margin: `10px auto 10px auto`,
+    margin: `10px auto 10px auto`
   },
   button: {
     marginTop: 30,
-    position: `relative`,
+    position: `relative`
   },
   customError: {
     color: `red`,
     fontSize: `0.8rem`,
-    marginTop: `10px`,
+    marginTop: `10px`
   },
   progress: {
     position: `absolute`,
-    color: `#147070`,
+    color: `#147070`
   },
 };
 

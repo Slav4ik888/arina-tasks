@@ -2,7 +2,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { StateNavbar } from '../types';
 
 const initialState: StateNavbar = {
-  status: false
+  status: true
 };
 
 

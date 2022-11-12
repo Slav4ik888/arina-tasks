@@ -17,10 +17,12 @@ const App: FC = () => {
         <AppRouter />
       </div>
 
-      <Footer>{`© ${new Date().getFullYear()} Created by Slav4ik888`}</Footer>
+      <Footer>
+        {`© ${new Date().getFullYear()} Created by Slav4ik888`}
+      </Footer>
     </div>
   );
 }
 
 export default App;
-//  git add . && git commit -m "start refact" && git push origin refact
+//  git add . && git commit -m "end big refact" && git push origin refact

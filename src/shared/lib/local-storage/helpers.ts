@@ -1,9 +1,18 @@
+import { ExPanel } from 'app/types/types';
 import { Schedule, TodoList } from 'features/schedule';
 import { setStorageData, getStorageData } from './main';
 
+enum Name {
+  SCHEDULE  = 'schedule',
+  TODO_LIST = 'todo_list',
+  EX_PANEL  = 'ex-panel'
+}
 
-export const setSchedule  = (data: Schedule) => setStorageData('schedule', data);
-export const getSchedule  = (): Schedule     => getStorageData('schedule') as Schedule;
+export const setSchedule  = (data: Schedule) => setStorageData(Name.SCHEDULE, data);
+export const getSchedule  = (): Schedule     => getStorageData(Name.SCHEDULE) as Schedule;
 
-export const setTodolist  = (data: TodoList) => setStorageData('schedule', data);
-export const getTodolist  = (): TodoList     => getStorageData('schedule') as TodoList;
+export const setTodolist  = (data: TodoList) => setStorageData(Name.TODO_LIST, data);
+export const getTodolist  = (): TodoList     => getStorageData(Name.TODO_LIST) as TodoList;
+
+export const setExPanel = (data: ExPanel)    => setStorageData(Name.EX_PANEL, data);
+export const getExPanel = (): ExPanel        => getStorageData(Name.EX_PANEL) as ExPanel;

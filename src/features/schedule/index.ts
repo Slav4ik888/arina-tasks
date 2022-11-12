@@ -1,3 +1,3 @@
-export { StateSchedule, Schedule, TodoType, TodoList, TodoElement } from './module/types'
+export { StateSchedule, Schedule, TodoListItem ,TodoType, Todo, TodoList, TodoElement, ScheduleError } from './module/types'
 export { scheduleActions, scheduleReducer } from './module/slice'
-export { selectScheduleSchedule } from './module/selectors'
+export { selectScheduleSchedule, selectScheduleError, selectTodoList } from './module/selectors'
