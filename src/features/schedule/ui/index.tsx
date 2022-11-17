@@ -37,7 +37,7 @@ const ScheduleContainer: FC = () => {
     console.log('printSchedule: ', schedule);
     handlerSaveSchedule(schedule);
     setIsForm(false);
-    dispatch(navbarActions.setStatus(false));
+    dispatch(navbarActions.setStatusNavbar(false));
   }, []);
   
 

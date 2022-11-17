@@ -1,4 +1,5 @@
 
 export interface StateNavbar {
-  status: boolean
+  statusNavbar: boolean
+  statusFooter: boolean
 }

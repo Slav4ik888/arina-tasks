@@ -1,0 +1,19 @@
+.root {
+  position: relative;
+  width: 35px;
+  height: 50px;
+  margin-right: 3px;
+  background-color: #fdfdfd;
+  border: 1px dotted rgb(146, 146, 146);
+  text-align: center;
+  align-items: center;
+  font-size: 40px;
+}
+
+.input {
+  position: absolute;
+  top: -1px;
+  right: -22px;
+  z-index: 100;
+  width: 55px;
+}

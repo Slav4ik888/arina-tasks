@@ -1,0 +1,37 @@
+.card {
+    display: flex;
+    flex-wrap: wrap; 
+    align-items: center; 
+    justify-content: center;
+    width: 257px;
+    height: 80px;
+    background-color: #fffbf2;
+    border: 0.5px solid rgb(192, 192, 192);
+
+}
+.task {
+    display: flex;
+    align-items: center; 
+    /* justify-content: flex-end; */
+    justify-content: center;
+
+    color:  #4d3601;
+    font-size: 30px;
+    width: 180px;
+}
+
+.result{
+    display: flex;
+    flex-wrap: wrap; 
+}
+
+.arg {
+    width: 35px;
+    height: 50px;
+    margin-right: 3px;
+    background-color: #fdfdfd;
+    border: 1px dotted rgb(146, 146, 146);
+    text-align: center;
+    align-items: center; 
+    font-size: 40px;
+  }

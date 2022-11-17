@@ -2,7 +2,8 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { StateNavbar } from '../types';
 
 const initialState: StateNavbar = {
-  status: true
+  statusNavbar : true,
+  statusFooter : true
 };
 
 
@@ -10,8 +11,11 @@ const slice = createSlice({
   name: 'navbar',
   initialState,
   reducers: {
-    setStatus: (state, { payload }: PayloadAction<boolean>) => {
-      state.status = payload;
+    setStatusNavbar: (state, { payload }: PayloadAction<boolean>) => {
+      state.statusNavbar = payload;
+    },
+    setStatusFooter: (state, { payload }: PayloadAction<boolean>) => {
+      state.statusFooter = payload;
     }
   }
 });

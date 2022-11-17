@@ -105,7 +105,11 @@
       "module": "CommonJS"
     }
   },
-  "exclude": ["build", "node_modules"],
+  "exclude": [
+    "build",
+    "node_modules",
+    "./src/shared/libs/dates"
+  ],
   "include": [
     "./config/jest/setup-tests.ts",
     "./src/**/*.ts",

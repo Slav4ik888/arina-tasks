@@ -1,3 +1,5 @@
 export type { StateNavbar } from './module/types'
 export { navbarActions, navbarReducer } from './module/slice'
-export { selectNavbarStatus } from './module/selectors'
+export { selectStatusNavbar, selectStatusFooter } from './module/selectors'
+export { Navbar } from './ui/navbar'
+export { Footer } from './ui/footer'

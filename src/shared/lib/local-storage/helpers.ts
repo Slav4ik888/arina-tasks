@@ -1,4 +1,4 @@
-import { ExPanel } from 'app/types/types';
+import { ExPanel } from 'entities/tasks';
 import { Schedule, TodoList } from 'features/schedule';
 import { setStorageData, getStorageData } from './main';
 

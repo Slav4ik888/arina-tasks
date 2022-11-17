@@ -1,3 +1,3 @@
-import TasksContainer from '../../../components/tasks/tasks-container';
+import { TasksPrepare } from '../../../entities/tasks/ui/tasks-prepare';
 
-export const CreateTasksPage = () => <TasksContainer />
+export const CreateTasksPage = () => <TasksPrepare />
