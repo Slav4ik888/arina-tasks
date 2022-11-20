@@ -22,4 +22,4 @@ const App: FC = () => {
 }
 
 export default App;
-//  git add . && git commit -m "merge big refact" && git push origin master
+//  git add . && git commit -m "fix webpack" && git push origin master

@@ -8,6 +8,7 @@ import { BuildOptions } from './types/config';
 
 
 export function buildPlugins({ paths, isDev, isAnal }: BuildOptions): WebpackPluginInstance[] {
+  console.log('isDev: ', isDev);
   const plugins = [
     new ProgressPlugin(),
     new HtmlWebpackPlugin({
