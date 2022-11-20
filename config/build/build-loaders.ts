@@ -12,7 +12,7 @@ export function buildLoaders({ isDev }: BuildOptions): RuleSetRule[]  {
   };
 
   const babelLoader = {
-    test    : /\.(js|jsx|tsx)$/,
+    test    : /\.(jsx?|tsx?)$/,
     exclude : /node_modules/,
     use     : {
       loader: 'babel-loader',

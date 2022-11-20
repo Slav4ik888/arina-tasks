@@ -10,7 +10,16 @@ export function buildResolvers(options: BuildOptions): ResolveOptions {
     mainFiles      : ['index'],
     alias          : {},
     fallback       : {
-      events: false
+      "events": false,
+      "fs": false,
+      "path": false,
+      "url": false,
+      "buffer": false,
+      "util": false,
+      "os": false,
+      "zlib": false,
+      "http": false,
+      "https": false
     }
   }
 }
