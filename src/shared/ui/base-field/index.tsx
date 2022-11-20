@@ -6,6 +6,7 @@ import s from './index.module.scss';
 
 type Props = {
 	value?     	 : number
+	classname?   : string
 	isOpenInput? : boolean
 	onClick?   	 : () => void
 	onChange?  	 : (value: number, key: string) => void
@@ -15,9 +16,11 @@ type Props = {
 
 export const BaseField: FC<Props> = (props) => {
 	const
-		{ isOpenInput, value, onClick, onChange, onBlur } = props,
+		{ isOpenInput, value, classname, onClick, onChange, onBlur } = props,
 		ref = useRef<HTMLInputElement>(null);
+		// styles = square ? { width: `${square}px`, height: `${square}px`} : {};
 
+	
 	useEffect(() => {
 		if (isOpenInput) ref.current.focus();
 	}, [isOpenInput]);
@@ -39,7 +42,10 @@ export const BaseField: FC<Props> = (props) => {
 
 
 	return (
-		<div className={s.root} onClick={onClick}>
+		<div
+			className = {cn(s.root, {}, [classname])}
+			onClick   = {onClick}
+		>
 			{
 				isOpenInput 
 					? <input

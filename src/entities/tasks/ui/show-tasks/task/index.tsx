@@ -1,33 +1,57 @@
 import { FC } from 'react';
-import { BaseField } from 'shared/ui';
-import { Task } from '../../../model';
+import { isUndefined } from 'shared/lib/validators';
+import { TaskEmptyFields } from './task-empty-fields';
+import { Task, TaskShowType } from '../../../model';
 import s from './index.module.scss';
 
 
 
 type Props = {
-	task: Task
+  type : TaskShowType
+	task : Task
 }
 
 
 /** Карточка для примера из 2х чисел */
-const Task: FC<Props> = ({ task: propsTask }) => {
-	const { a, b, c, type1, type2 } = propsTask;
+const Task: FC<Props> = ({ type, task: propsTask }) => {
+	const
+		{ a, b, c, type1, type2, result } = propsTask,
+		digits = [],
+		styles = type !== TaskShowType.SHOW ? { background: '#fff' } : {};
 
 	let task = '';
-	if (!type2) task = `${a} ${type1} ${b} = `;
-	if (type2) task = `${a} ${type1} ${b} ${type2} ${c} =`;
+
+	if (isUndefined(a)) digits.push(<TaskEmptyFields />)
+	else digits.push(<span className={s.span}>{a}</span>)
+
+	digits.push(<span className={s.span}>{type1}</span>);
+
+	if (isUndefined(b)) digits.push(<TaskEmptyFields />)
+	else digits.push(<span className={s.span}>{b}</span>)
+
 	
-	const styleCover = task.length > 12 ? { fontSize: '24px'} : {};
+	if (!type2) task = `${a} ${type1} ${b} = `;
+	else {
+		task = `${a} ${type1} ${b} ${type2} ${c} =`;
+
+		digits.push(<span className={s.span}>{type2}</span>);
+
+		if (isUndefined(c)) digits.push(<TaskEmptyFields />)
+		else digits.push(<span className={s.span}>{c}</span>)
+	}
+
+	digits.push(<span className={s.span}>=</span>);
+
+	if (isUndefined(result)) digits.push(<TaskEmptyFields />)
+	else digits.push(<span className={s.span}>{result}</span>)
+
 
 	return (
-		<div className={s.card}>
-			<div className={s.task} style={styleCover}>
-				{task} 
-			</div>
-			<div className={s.result}>
-				<BaseField />
-				<BaseField />
+		<div className={s.card} style={styles}>
+			<div className={s.task}>
+				{
+					digits.map((d, i) => <span key={i}>{d}</span>)
+				}
 			</div>
 		</div>
 	);

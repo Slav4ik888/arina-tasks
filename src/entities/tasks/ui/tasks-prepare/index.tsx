@@ -2,11 +2,11 @@ import { FC, useEffect, useState } from 'react';
 // Readux Stuff
 import { useAppDispatch } from 'shared/lib/hooks';
 import { useSelector } from 'react-redux';
-import { Tasks, selectTasks, tasksActions } from '../../model';
+import { Tasks, selectTasks, tasksActions, TaskShowType } from '../../model';
 import { navbarActions } from 'features/navbar';
 // Components
-import ShowTasks from '../show-tasks';
-import TasksForm from '../../tasks-form';
+import { ShowTasks } from '../show-tasks';
+import { TasksForm } from './tasks-form';
 
 
 

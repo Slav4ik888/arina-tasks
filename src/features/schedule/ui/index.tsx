@@ -5,7 +5,7 @@ import { useAppDispatch } from 'shared/lib/hooks';
 import { navbarActions } from 'features/navbar';
 import { Schedule, scheduleActions, selectScheduleSchedule, selectTodoList } from '../module';
 // Components
-import ScheduleForm from '../../../components/schedule/schedule-form/schedule-form';
+import ScheduleForm from './schedule/schedule-form/schedule-form';
 // Functions
 import * as LS from 'shared/lib/local-storage';
 import { EMPTY_SCHEDULE } from '../utils';

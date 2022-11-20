@@ -6,10 +6,5 @@ import { useSelector } from 'react-redux'
 export const PrintTasksPage = () => {
   const tasks = useSelector(selectTasks);
 
-
-  return (
-    <>
-      <TasksContainer tasks={tasks} />
-    </>
-  )
+  return (<TasksContainer tasks={tasks} />)
 }

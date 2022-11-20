@@ -22,4 +22,4 @@ const App: FC = () => {
 }
 
 export default App;
-//  git add . && git commit -m "end big refact continue" && git push origin refact
+//  git add . && git commit -m "end big refact" && git push origin refact
